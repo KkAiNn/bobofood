@@ -16,7 +16,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.example.bobofood"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = "27.0.12077973"
 
     compileOptions {
@@ -85,4 +85,5 @@ flutter {
 dependencies {
     // 添加脱糖库依赖
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+    implementation("com.amap.api:location:6.1.0") // ✅ 或者使用新版如 6.1.0
 }

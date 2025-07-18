@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:amap_flutter_location/amap_location_option.dart';
 import 'package:bobofood/common/controller/auth_controller.dart';
 import 'package:bobofood/common/controller/theme_controller.dart';
 import 'package:bobofood/constants/constants.dart';
 import 'package:bobofood/router/app_router.dart';
 import 'package:bobofood/utils/app_event_bus.dart';
+import 'package:bobofood/utils/location.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
@@ -54,6 +56,11 @@ class UserController extends GetxController {
     super.onInit();
     _themeSub = ThemeEventListener.listen(() {
       _initData();
+    });
+
+    LocationUtils.getCurrentPosition(mode: AMapLocationMode.Device_Sensors)
+        .then((value) {
+      print(value);
     });
   }
 

@@ -9,9 +9,28 @@ import 'package:get/get.dart';
 
 import 'index.dart';
 
-class TrackOrderPage extends GetView<TrackOrderController> {
-  const TrackOrderPage({super.key});
+class TrackOrderPage extends StatefulWidget {
+  const TrackOrderPage({
+    super.key,
+  });
 
+  @override
+  State<TrackOrderPage> createState() => _TrackOrderPageState();
+}
+
+class _TrackOrderPageState extends State<TrackOrderPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return _TrackOrderViewGetX();
+  }
+}
+
+class _TrackOrderViewGetX extends GetView<TrackOrderController> {
   // 主视图
   Widget _buildView() {
     return Padding(

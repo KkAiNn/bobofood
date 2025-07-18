@@ -47,6 +47,12 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<true/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>需要访问您的位置以获取定位服务</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>我们需要持续访问您的位置以在后台运行时提供服务</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>我们需要获取您的位置来提供服务</string>
 		<key>NSPhotoLibraryAddUsageDescription</key>
 		<string>我们需要将处理后的视频或图片保存到相册</string>
 		<key>NSCameraUsageDescription</key>

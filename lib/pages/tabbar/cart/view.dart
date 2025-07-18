@@ -11,8 +11,32 @@ import 'package:get/get.dart';
 
 import 'index.dart';
 
-class CartPage extends GetView<CartController> {
-  const CartPage({super.key});
+class CartPage extends StatefulWidget {
+  const CartPage({super.key, this.onOpenUser});
+
+  final Function()? onOpenUser;
+
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return _CartViewGetX(onOpenUser: widget.onOpenUser);
+  }
+}
+
+class _CartViewGetX extends GetView<CartController> {
+  const _CartViewGetX({this.onOpenUser});
+
+  final Function()? onOpenUser;
+
   Widget _buildFooter() {
     return Container(
       padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 8.w, top: 4.h),

@@ -1,0 +1,26 @@
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)  # Flutter 官方默认额外设置
+
+    target.build_configurations.each do |config|
+      # 模拟器排除 arm64 架构，避免 M1 Mac 构建问题
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+
+      # 关闭 Bitcode，部分库（比如 video_compress）需要
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+
+      # 编译所有架构（不是只用当前架构）
+      config.build_settings["ONLY_ACTIVE_ARCH"] = "NO"
+    end
+
+    target.build_configurations.each do |config|
+      # 定义宏，方便代码里基于宏控制权限功能
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        'PERMISSION_MICROPHONE=1',
+        'PERMISSION_CAMERA=1',
+        'PERMISSION_PHOTOS=1',
+      ]
+    end
+  end
+end

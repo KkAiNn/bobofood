@@ -266,14 +266,14 @@ class AppRefreshWrapper<T> extends StatelessWidget {
       enablePullUp: controller.enablePullUp && controller.items.isNotEmpty,
       onRefresh: _onRefresh,
       onLoading: _onLoadMore,
-      header: ClassicHeader(
-        textStyle: TextStyle(fontSize: 14),
-        refreshingText: "刷新中...",
-        idleText: "下拉刷新",
-        releaseText: "松开刷新",
-        failedText: "刷新失败",
-        completeText: "刷新完成",
-      ),
+      // header: ClassicHeader(
+      //   textStyle: TextStyle(fontSize: 14),
+      //   refreshingText: "刷新中...",
+      //   idleText: "下拉刷新",
+      //   releaseText: "松开刷新",
+      //   failedText: "刷新失败",
+      //   completeText: "刷新完成",
+      // ),
       footer: ClassicFooter(
         loadingText: controller.showPullUpText ? "加载中..." : '',
         noDataText: controller.showPullUpText ? "没有更多数据" : '',

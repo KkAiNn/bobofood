@@ -118,12 +118,12 @@ class _HomeViewGetX extends GetView<HomeController> {
         itemBuilder: (context, url, index) {
           return Image.asset(
             url,
-            height: 140,
+            fit: BoxFit.fill,
           );
         },
-        height: 140,
+        height: 140.h,
         viewportFraction: 0.95,
-        itemSpacing: 8,
+        itemSpacing: 8.w,
         enableInfiniteScroll: true,
         autoPlay: false,
         onPageChanged: (index) {

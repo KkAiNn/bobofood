@@ -9,12 +9,32 @@ import 'package:get/get.dart';
 
 import 'index.dart';
 
-class FavouritesPage extends GetView<FavouritesController> {
-  const FavouritesPage({super.key});
+class FavouritesPage extends StatefulWidget {
+  const FavouritesPage({
+    super.key,
+  });
 
+  @override
+  State<FavouritesPage> createState() => _FavouritesPageState();
+}
+
+class _FavouritesPageState extends State<FavouritesPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return _FavouritesViewGetX();
+  }
+}
+
+class _FavouritesViewGetX extends GetView<FavouritesController> {
   Widget _buildProductList() {
     return AppRefreshWrapper(
-      padding: EdgeInsets.only(top: 16.w, left: 20.w, right: 20.w),
+      padding:
+          EdgeInsets.only(top: 16.h, left: 20.w, right: 20.w, bottom: 16.h),
       controller: controller.listController,
       separator: SizedBox(height: 12.h),
       itemBuilder: (context, item, index) {

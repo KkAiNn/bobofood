@@ -10,9 +10,28 @@ import 'package:get/get.dart';
 
 import 'index.dart';
 
-class NotificationPage extends GetView<NotificationController> {
-  const NotificationPage({super.key});
+class NotificationPage extends StatefulWidget {
+  const NotificationPage({
+    super.key,
+  });
 
+  @override
+  State<NotificationPage> createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return _NotificationViewGetX();
+  }
+}
+
+class _NotificationViewGetX extends GetView<NotificationController> {
   // 主视图
   Widget _buildEmpty() {
     return EmptyWidget(

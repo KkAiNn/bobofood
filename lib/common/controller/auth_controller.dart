@@ -4,6 +4,7 @@ import 'package:bobofood/pages/card/payment_methods/controller.dart';
 import 'package:bobofood/pages/tabbar/cart/controller.dart';
 import 'package:bobofood/services/mock_data.dart';
 import 'package:bobofood/services/storage_services.dart';
+import 'package:bobofood/utils/location.dart';
 import 'package:bobofood/utils/logger.dart';
 import 'package:get/get.dart';
 
@@ -72,6 +73,7 @@ class AuthController extends GetxController {
   }
 
   void initController() {
+    LocationUtils.init();
     // 地址
     Get.put<AddressController>(AddressController(), permanent: true);
     // 购物车
