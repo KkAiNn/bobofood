@@ -214,7 +214,7 @@ class _AppInputState extends State<AppInput> {
             : AppColors.colors.icon.defaultColor,
         filled: true,
         fillColor: _hasError
-            ? AppColors.colors.background.danger.withOpacity(0.1)
+            ? AppColors.colors.background.danger.withValues(alpha: 0.1)
             : widget.fillColor ?? AppColors.colors.background.elementBackground,
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

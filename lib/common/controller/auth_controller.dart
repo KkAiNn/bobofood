@@ -39,19 +39,27 @@ class AuthController extends GetxController {
         AppStorage.auth.get(LocalCacheKey.token, defaultValue: "") ?? "";
 
     if (isLogin.value) {
-      initController();
+      refreshInfo();
     }
+  }
+
+  void refreshInfo() {
+    loginSuccess();
   }
 
   void login(LoginParamsState data) {
     logger.d('email: ${data.email}, ,password: ${data.password}');
+    loginSuccess();
+    Get.offAllNamed(AppRoute.home);
+  }
+
+  void loginSuccess() {
     isLogin.value = true;
     final info = getUserInfo();
     token.value = info.token ?? "";
     AppStorage.auth.put(LocalCacheKey.token, token.value);
     updateUserInfo(info);
     initController();
-    Get.offAllNamed(AppRoute.home);
   }
 
   void register(UserModel data) {

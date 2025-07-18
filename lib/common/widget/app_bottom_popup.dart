@@ -106,7 +106,7 @@ class AppBottomPopup extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
 
   const AppBottomPopup({
-    Key? key,
+    super.key,
     this.title,
     required this.content,
     this.confirmText,
@@ -121,7 +121,7 @@ class AppBottomPopup extends StatelessWidget {
     this.customBottomButtons,
     this.barrierDismissible = true,
     this.contentPadding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -329,7 +329,7 @@ class AppBottomPopup extends StatelessWidget {
         customBottomButtons: customBottomButtons,
         contentPadding: contentPadding,
       ),
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black.withValues(alpha: 0.5),
       isDismissible: barrierDismissible,
       enableDrag: true,
       isScrollControlled: true,

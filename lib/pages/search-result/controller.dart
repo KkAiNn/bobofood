@@ -33,11 +33,11 @@ class SearchResultController extends GetxController {
   void onTap() {}
 
   void onSearch(String value) {
-    print(value);
+    logger.d('onSearch: $value');
   }
 
   void onChanged(String value) {
-    print(value);
+    logger.d('onChanged: $value');
   }
 
   void onTapProduct(ProductModel product) {

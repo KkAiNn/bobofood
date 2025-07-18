@@ -11,6 +11,7 @@ import 'package:bobofood/common/widget/tap_effect.dart';
 import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:bobofood/constants/colors.dart';
 import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -94,7 +95,7 @@ class _HomeViewGetX extends GetView<HomeController> {
                         'classic momos',
                       ],
                       itemToString: (item) => item,
-                      onChanged: (value) => print('选中：$value'),
+                      onChanged: (value) => logger.d('选中：$value'),
                     )
                   ],
                 ),
@@ -122,7 +123,7 @@ class _HomeViewGetX extends GetView<HomeController> {
         enableInfiniteScroll: true,
         autoPlay: false,
         onPageChanged: (index) {
-          print('当前页: $index');
+          logger.d('当前页: $index');
         },
       ),
     );
@@ -136,7 +137,7 @@ class _HomeViewGetX extends GetView<HomeController> {
         currentTab: controller.currentTab,
         tabs: controller.tabs,
         onTap: (tab) {
-          print('选中：$tab');
+          logger.d('选中：$tab');
           controller.changeTab(tab);
         },
         itemToString: (item) => item.toString(),

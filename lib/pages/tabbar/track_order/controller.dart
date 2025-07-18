@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bobofood/router/app_router.dart';
 import 'package:bobofood/utils/app_event_bus.dart';
+import 'package:bobofood/utils/logger.dart';
 import 'package:get/get.dart';
 
 class TrackOrderController extends GetxController {
@@ -58,7 +59,7 @@ class TrackOrderController extends GetxController {
   }
 
   void onSearch(String value) {
-    print(value);
+    logger.d('onSearch: $value');
     Get.toNamed(AppRoute.searchResult, arguments: value);
   }
 

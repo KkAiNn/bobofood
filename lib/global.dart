@@ -1,5 +1,7 @@
 import 'package:bobofood/pages/main/splash.dart';
 import 'package:bobofood/pages/main/view.dart';
+import 'package:bobofood/services/notification_service.dart';
+import 'package:bobofood/utils/logger.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +21,14 @@ class Global {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
+    // 初始化通知服务
+    try {
+      await NotificationService().init();
+    } catch (e) {
+      logger.e('通知服务初始化失败: $e');
+    }
+
     await AppStorage.init();
     DioService();
     PlatformUtils.init();

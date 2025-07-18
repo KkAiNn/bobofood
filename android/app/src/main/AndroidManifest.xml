@@ -75,11 +75,11 @@
     <!-- 震动权限 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- 开机自启动广播接收权限 -->
-    <!-- <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/> -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <!-- 全屏通知权限 -->
-    <!-- <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" /> -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <!-- 精确闹钟调度权限 -->
     <!-- <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> -->
     <!-- 推送通知权限，Android 13+ -->
-    <!-- <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/> -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 </manifest>

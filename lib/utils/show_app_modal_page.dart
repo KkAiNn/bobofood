@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 Future<T?> showAppModalPage<T>(
   BuildContext context, {
@@ -12,7 +11,7 @@ Future<T?> showAppModalPage<T>(
     context: context,
     barrierLabel: 'AppModal',
     barrierDismissible: barrierDismissible,
-    barrierColor: Colors.black.withOpacity(0.3),
+    barrierColor: Colors.black.withValues(alpha: 0.3),
     transitionDuration: const Duration(milliseconds: 300),
     pageBuilder: (context, animation, secondaryAnimation) {
       return const SizedBox.shrink(); // 由 transitionBuilder 渲染
@@ -26,9 +25,9 @@ Future<T?> showAppModalPage<T>(
 
       return ModalPageWrapper(
         animation: curvedAnimation,
-        child: child,
         maxHeightFraction: maxHeightFraction,
         radius: radius,
+        child: child,
       );
     },
   );

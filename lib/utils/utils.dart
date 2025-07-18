@@ -7,6 +7,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:math' as math;
 
+import 'package:bobofood/utils/logger.dart';
 import 'package:crypto/crypto.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:bobofood/utils/toast.dart';
@@ -407,7 +408,7 @@ class Utils {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
-      print("无法打开: $schemeUrl");
+      logger.e("无法打开: $schemeUrl");
       // 你可以弹个 toast 提示用户未安装
       AppToast.show('应用未安装');
     }

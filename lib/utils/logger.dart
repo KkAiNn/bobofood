@@ -10,18 +10,18 @@ final AppLogger logger = AppLogger();
 /// 日志封装类
 class AppLogger extends Logger {
   AppLogger()
-    : super(
-        printer: PrettyPrinter(
-          methodCount: 2,
-          errorMethodCount: 8,
-          lineLength: 120,
-          colors: true,
-          printEmojis: true,
-          dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
-        ),
-        filter: _CustomFilter(),
-        output: _getPlatformOutput(),
-      );
+      : super(
+          printer: PrettyPrinter(
+            methodCount: 2,
+            errorMethodCount: 8,
+            lineLength: 120,
+            colors: true,
+            printEmojis: true,
+            dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
+          ),
+          filter: _CustomFilter(),
+          output: _getPlatformOutput(),
+        );
 }
 
 /// 输出策略：根据平台和构建模式决定输出方式
@@ -47,7 +47,7 @@ class FileOutput extends LogOutput {
       final logLine = '${event.lines.join('\n')}\n';
       await file.writeAsString(logLine, mode: FileMode.writeOnlyAppend);
     } catch (e) {
-      print("日志写入失败: $e");
+      logger.e("日志写入失败: $e");
     }
   }
 
@@ -80,7 +80,7 @@ Future<bool> clearLogs() async {
     await file.writeAsString('');
     return true;
   } catch (e) {
-    print("清空日志失败: $e");
+    logger.e("清空日志失败: $e");
     return false;
   }
 }

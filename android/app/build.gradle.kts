@@ -22,6 +22,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+        // 启用核心库脱糖以支持 Java 8 特性
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -78,4 +80,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // 添加脱糖库依赖
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }

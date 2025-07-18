@@ -68,7 +68,7 @@ class AppActionSheet extends StatelessWidget {
   final double spacing;
 
   const AppActionSheet({
-    Key? key,
+    super.key,
     required this.items,
     this.title,
     this.cancelText,
@@ -77,7 +77,7 @@ class AppActionSheet extends StatelessWidget {
     this.itemHeight = 56.0,
     this.titleStyle,
     this.spacing = 8.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

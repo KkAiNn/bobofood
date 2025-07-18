@@ -6,6 +6,7 @@ import 'package:bobofood/common/model/address.dart';
 import 'package:bobofood/common/widget/app_action_sheet.dart';
 import 'package:bobofood/pages/login/register/controller.dart';
 import 'package:bobofood/router/app_router.dart';
+import 'package:bobofood/utils/logger.dart';
 import 'package:bobofood/utils/media/media_utils.dart';
 import 'package:get/get.dart';
 
@@ -63,7 +64,7 @@ class CreateProfileController extends GetxController {
   }
 
   void setAvatarUrl(File? res) {
-    print("url: $res");
+    logger.d("url: $res");
     if (res != null) {
       avatarUrl = res.path;
       _initData();
@@ -77,18 +78,18 @@ class CreateProfileController extends GetxController {
   }
 
   void validateProfile() {
-    bool _isDisabled = false;
+    bool isDisabled = false;
     for (var key in profile.keys) {
       if (profile[key] == null || profile[key]!.isEmpty) {
-        _isDisabled = true;
+        isDisabled = true;
         break;
       }
     }
     if (avatarUrl == null) {
-      _isDisabled = true;
+      isDisabled = true;
     }
-    if (_isDisabled != isDisabled) {
-      isDisabled = _isDisabled;
+    if (this.isDisabled != isDisabled) {
+      this.isDisabled = isDisabled;
       _initData();
     }
   }

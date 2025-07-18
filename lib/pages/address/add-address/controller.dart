@@ -28,7 +28,6 @@ class AddAddressController extends GetxController {
   }
 
   onSwitchChange(bool value) {
-    print(formManager.getAllEmptyValues());
     address = address?.copyWith(isDefault: value);
     update(["add_address"]);
   }
