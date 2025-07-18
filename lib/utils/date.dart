@@ -13,6 +13,7 @@ class JiffyDateUtils {
   static const String FORMAT_YYYY_MM_DD_CN = 'yyyy年MM月dd日';
   static const String FORMAT_MM_DD_CN = 'MM月dd日';
   static const String FORMAT_YYYY_MM_DD_HH_MM_CN = 'yyyy年MM月dd日 HH:mm';
+  static const String FORMAT_YYYY_MM_DD_HH_MM_SS_CN = 'yyyy年MM月dd日 HH:mm:ss';
 
   /// 获取当前时间
   static Jiffy now() => Jiffy.now();
@@ -40,6 +41,14 @@ class JiffyDateUtils {
     String format = FORMAT_YYYY_MM_DD_HH_MM_SS,
   ]) {
     return create(dateTime).format(pattern: format);
+  }
+
+  static int formatToTimestamp(dynamic dateTime) {
+    return create(dateTime).millisecondsSinceEpoch;
+  }
+
+  static int formatToDateNumber(dynamic dateTime, {String pattern = 'HHmmss'}) {
+    return int.parse(create(dateTime).format(pattern: pattern));
   }
 
   /// 格式化为 yyyy-MM-dd

@@ -7,6 +7,7 @@ import 'package:bobofood/constants/colors.dart';
 import 'package:bobofood/constants/text_style.dart';
 import 'package:bobofood/router/app_router.dart';
 import 'package:bobofood/services/notification_service.dart';
+import 'package:bobofood/utils/date.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -163,7 +164,7 @@ class _OrderPlacedPageState extends State<OrderPlacedPage> {
   Future<void> _showSimpleNotification() async {
     NotificationService notificationService = NotificationService();
     await notificationService.showSimpleNotification(
-      id: DateTime.now().millisecondsSinceEpoch,
+      id: JiffyDateUtils.formatToDateNumber(DateTime.now()),
       title: 'Order Placed',
       body: 'Your order would be delivered in the 30 mins atmost',
       payload: 'simple_notification',

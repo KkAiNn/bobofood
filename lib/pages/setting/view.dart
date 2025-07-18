@@ -85,15 +85,17 @@ class SettingPage extends GetView<SettingController> {
 
   // 主视图
   Widget _buildView() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-      child: Column(
-        spacing: 16.h,
-        children: [
-          _buildGeneral(),
-          _buildOthers(),
-          _buildDanger(),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
+        child: Column(
+          spacing: 16.h,
+          children: [
+            _buildGeneral(),
+            _buildOthers(),
+            _buildDanger(),
+          ],
+        ),
       ),
     );
   }

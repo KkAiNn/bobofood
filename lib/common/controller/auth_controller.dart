@@ -73,11 +73,12 @@ class AuthController extends GetxController {
 
   void initController() {
     // 地址
-    Get.lazyPut<AddressController>(() => AddressController());
+    Get.put<AddressController>(AddressController(), permanent: true);
     // 购物车
-    Get.lazyPut<CartController>(() => CartController());
+    Get.put<CartController>(CartController(), permanent: true);
     // 银行卡
-    Get.lazyPut<PaymentMethodsController>(() => PaymentMethodsController());
+    Get.put<PaymentMethodsController>(PaymentMethodsController(),
+        permanent: true);
   }
 
   void disposeController() {
