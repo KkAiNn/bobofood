@@ -17,7 +17,7 @@ class AppIndicator extends StatelessWidget {
             (index) => AnimatedContainer(
               margin: EdgeInsets.symmetric(horizontal: 4.w),
               width: 12.w,
-              height: 12.h,
+              height: 12.w,
               decoration: BoxDecoration(
                   color: currentIndex == index
                       ? AppColors.colors.typography.primary

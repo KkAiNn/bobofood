@@ -26,6 +26,7 @@ class CartPage extends GetView<CartController> {
         ),
       ),
       child: Row(
+        spacing: 38.w,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           AppText(
@@ -33,9 +34,7 @@ class CartPage extends GetView<CartController> {
             style: AppTextStyle.robotoHeading(
                 color: AppColors.colors.typography.heading),
           ),
-          Container(
-            width: 224.w,
-            padding: EdgeInsets.symmetric(vertical: 8.h),
+          Expanded(
             child: AppButton(
               text: 'Proceed to pay',
               onTap: controller.onTapProceedToPay,

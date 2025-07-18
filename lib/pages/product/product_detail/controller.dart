@@ -18,10 +18,12 @@ class ProductDetailController extends GetxController {
   int count = 1;
   late ProductModel product;
 
-  double get totalPrice => (product.price ?? 0) * count;
+  String get totalPrice => ((product.price ?? 0) * count).toStringAsFixed(2);
 
   void onTapRemove() {
-    count--;
+    if (count > 1) {
+      count--;
+    }
     update(["product_detail"]);
   }
 

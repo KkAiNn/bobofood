@@ -20,14 +20,14 @@ class AppAvatar extends StatelessWidget {
   final Function()? onTap;
   final bool isShowCamera;
   Widget _buildAvatar() {
-    final radius = size == AvatarSize.xl
+    double radius = size == AvatarSize.xl
         ? 60.r
         : size == AvatarSize.lg
             ? 40.r
             : size == AvatarSize.md
                 ? 24.r
                 : 20.r;
-    final width = size == AvatarSize.xl
+    double width = size == AvatarSize.xl
         ? 120.w
         : size == AvatarSize.lg
             ? 80.w

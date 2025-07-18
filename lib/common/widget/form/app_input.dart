@@ -152,107 +152,111 @@ class _AppInputState extends State<AppInput> {
     }
 
     final isMultiline = widget.minLines != null && widget.minLines! > 1;
-    return TextFormField(
-      key: widget.formFieldKey, // ✅ 只绑定外部传入的 key
-      textAlign: widget.textAlign ?? TextAlign.start,
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      autofocus: widget.autofocus,
-      obscureText: widget.obscureText,
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      maxLines: isMultiline ? null : widget.maxLines,
-      minLines: isMultiline ? widget.minLines : null,
-      maxLength: widget.maxLength,
-      enabled: widget.enabled,
-      readOnly: widget.readOnly,
-      onTap: widget.onTap,
-      onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onSubmitted,
-      onSaved: (value) => widget.onSubmitted?.call(value ?? ''),
-      inputFormatters: widget.inputFormatters,
-      style: widget.enabled
-          ? (widget.textStyle ?? AppTextStyle.poppinMedium400()).copyWith(
-              color: _hasError
-                  ? AppColors.colors.typography.danger
-                  : AppColors.colors.typography.heading,
-            )
-          : (widget.disabledTextStyle ??
-              (widget.textStyle ?? AppTextStyle.poppinMedium400()).copyWith(
+    return SizedBox(
+      height: 48.h,
+      child: TextFormField(
+        key: widget.formFieldKey, // ✅ 只绑定外部传入的 key
+        textAlign: widget.textAlign ?? TextAlign.start,
+        controller: widget.controller,
+        focusNode: widget.focusNode,
+        autofocus: widget.autofocus,
+        obscureText: widget.obscureText,
+        keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
+        maxLines: isMultiline ? null : widget.maxLines,
+        minLines: isMultiline ? widget.minLines : null,
+        maxLength: widget.maxLength,
+        enabled: widget.enabled,
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onSubmitted,
+        onSaved: (value) => widget.onSubmitted?.call(value ?? ''),
+        inputFormatters: widget.inputFormatters,
+        style: widget.enabled
+            ? (widget.textStyle ?? AppTextStyle.poppinMedium400()).copyWith(
                 color: _hasError
                     ? AppColors.colors.typography.danger
                     : AppColors.colors.typography.heading,
-              )),
-      validator: (value) {
-        final result = validator(value);
-        final isError = result != null;
-        if (isError && widget.controller?.hasError.value == false) {
-          widget.controller?.setError(isError);
-        } else if (!isError && widget.controller?.hasError.value == true) {
-          widget.controller?.clearError();
-        }
-        return result;
-      },
-      decoration: InputDecoration(
-        hintText: widget.hintText,
-        hintStyle: widget.hintStyle != null
-            ? widget.hintStyle?.copyWith(
-                color: _hasError
-                    ? AppColors.colors.typography.danger
-                    : widget.hintStyle?.color,
               )
-            : AppTextStyle.poppinMedium400(
-                color: _hasError
-                    ? AppColors.colors.typography.danger
-                    : AppColors.colors.typography.inactive,
-              ),
-        labelText: widget.labelText,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: widget.suffixIcon,
-        iconColor: _hasError
-            ? AppColors.colors.typography.danger
-            : AppColors.colors.icon.defaultColor,
-        filled: true,
-        fillColor: _hasError
-            ? AppColors.colors.background.danger.withValues(alpha: 0.1)
-            : widget.fillColor ?? AppColors.colors.background.elementBackground,
-        contentPadding: widget.contentPadding ??
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        errorMaxLines: 2,
-        border: OutlineInputBorder(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-          borderSide: BorderSide.none,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-          borderSide: BorderSide(
-            color: AppColors.colors.bordersAndSeparators.defaultColor,
-            width: 1.w,
-          ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-          borderSide: BorderSide(
-            color: AppColors.colors.bordersAndSeparators.defaultColor,
-            width: 1.w,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-          borderSide: BorderSide(
-            color: AppColors.colors.bordersAndSeparators.primary,
-            width: 2.w,
-          ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-          borderSide: BorderSide.none,
-        ),
-        focusedErrorBorder: OutlineInputBorder(
+            : (widget.disabledTextStyle ??
+                (widget.textStyle ?? AppTextStyle.poppinMedium400()).copyWith(
+                  color: _hasError
+                      ? AppColors.colors.typography.danger
+                      : AppColors.colors.typography.heading,
+                )),
+        validator: (value) {
+          final result = validator(value);
+          final isError = result != null;
+          if (isError && widget.controller?.hasError.value == false) {
+            widget.controller?.setError(isError);
+          } else if (!isError && widget.controller?.hasError.value == true) {
+            widget.controller?.clearError();
+          }
+          return result;
+        },
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          hintStyle: widget.hintStyle != null
+              ? widget.hintStyle?.copyWith(
+                  color: _hasError
+                      ? AppColors.colors.typography.danger
+                      : widget.hintStyle?.color,
+                )
+              : AppTextStyle.poppinMedium400(
+                  color: _hasError
+                      ? AppColors.colors.typography.danger
+                      : AppColors.colors.typography.inactive,
+                ),
+          labelText: widget.labelText,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.suffixIcon,
+          iconColor: _hasError
+              ? AppColors.colors.typography.danger
+              : AppColors.colors.icon.defaultColor,
+          filled: true,
+          fillColor: _hasError
+              ? AppColors.colors.background.danger.withValues(alpha: 0.1)
+              : widget.fillColor ??
+                  AppColors.colors.background.elementBackground,
+          contentPadding: widget.contentPadding ??
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          errorMaxLines: 2,
+          border: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
-            borderSide: BorderSide.none),
-        errorStyle: AppTextStyle.poppinMedium400(
-          color: AppColors.colors.typography.danger,
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+            borderSide: BorderSide(
+              color: AppColors.colors.bordersAndSeparators.defaultColor,
+              width: 1.w,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+            borderSide: BorderSide(
+              color: AppColors.colors.bordersAndSeparators.defaultColor,
+              width: 1.w,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+            borderSide: BorderSide(
+              color: AppColors.colors.bordersAndSeparators.primary,
+              width: 2.w,
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+            borderSide: BorderSide.none,
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),
+              borderSide: BorderSide.none),
+          errorStyle: AppTextStyle.poppinMedium400(
+            color: AppColors.colors.typography.danger,
+          ),
         ),
       ),
     );

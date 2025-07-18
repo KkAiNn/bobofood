@@ -1,4 +1,5 @@
 import 'package:bobofood/router/app_router.dart';
+import 'package:bobofood/services/storage_services.dart';
 import 'package:bobofood/utils/toast.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +13,7 @@ class LoginController extends GetxController {
   void onTap() {}
 
   void onTapApple() {
+    AppStorage.conifg.put(ConifgBoxKey.splash, false);
     AppToast.show('Coming soon');
   }
 

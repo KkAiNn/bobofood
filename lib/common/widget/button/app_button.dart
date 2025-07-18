@@ -118,7 +118,7 @@ class _AppButtonState extends State<AppButton> {
   }
 
   Widget _initContainer() {
-    var height = 52.h;
+    double height = 52.h;
     switch (widget.size) {
       case AppButtonSize.normal:
         height = 52.h;

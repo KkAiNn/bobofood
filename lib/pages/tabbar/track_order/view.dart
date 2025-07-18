@@ -41,7 +41,7 @@ class TrackOrderPage extends GetView<TrackOrderController> {
                           image: AssetImage(e['pic']),
                           fit: BoxFit.cover,
                         ),
-                        borderRadius: BorderRadius.circular(12.r),
+                        borderRadius: BorderRadius.circular(24.r),
                       ),
                       child: Center(
                         child: AppText(e['title'],

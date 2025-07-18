@@ -189,14 +189,14 @@ class ProductDetailPage extends GetView<ProductDetailController> {
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        spacing: 38.w,
         children: [
           AppText(
             '\$${controller.totalPrice}',
             style: AppTextStyle.robotoHeading(
                 color: AppColors.colors.typography.heading),
           ),
-          SizedBox(
-            width: 224.w,
+          Expanded(
             child: AppButton(
               text: 'Add to cart',
               onTap: controller.onTapAddToCart,

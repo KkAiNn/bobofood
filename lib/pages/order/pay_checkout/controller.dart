@@ -4,6 +4,8 @@ import 'package:bobofood/pages/address/controller.dart';
 import 'package:bobofood/pages/card/payment_methods/controller.dart';
 import 'package:bobofood/pages/tabbar/cart/controller.dart';
 import 'package:bobofood/router/app_router.dart';
+import 'package:bobofood/services/notification_service.dart';
+import 'package:bobofood/utils/date.dart';
 import 'package:get/get.dart';
 
 class PayCheckoutController extends GetxController {
@@ -61,7 +63,18 @@ class PayCheckoutController extends GetxController {
     }
   }
 
+  Future<void> _showSimpleNotification() async {
+    NotificationService notificationService = NotificationService();
+    await notificationService.showSimpleNotification(
+      id: JiffyDateUtils.formatToDateNumber(DateTime.now()),
+      title: 'Order Placed',
+      body: 'Your order would be delivered in the 30 mins atmost',
+      payload: 'simple_notification',
+    );
+  }
+
   void onContinue() {
+    _showSimpleNotification();
     int popCount = 0;
     Get.offNamedUntil(AppRoute.orderPlaced, (route) {
       return popCount++ >= 2; // 跳过2层

@@ -103,7 +103,7 @@ class ProductLandscape extends StatelessWidget {
               ),
               SizedBox(height: 14.h),
               AppText(
-                '\$ ${product.price}',
+                '\$${product.price}',
                 style: AppTextStyle.robotoMedium(
                   color: AppColors.colors.typography.heading,
                 ),

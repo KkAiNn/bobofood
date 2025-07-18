@@ -14,6 +14,7 @@ import 'package:bobofood/constants/text_style.dart';
 import 'package:bobofood/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 import 'index.dart';
@@ -47,62 +48,65 @@ class _HomeViewGetX extends GetView<HomeController> {
   // 头部内容
   Widget _buildHeader() {
     return Container(
-        color: AppColors.theme.white,
-        padding: EdgeInsets.only(bottom: 12),
-        child: SafeArea(
-          child: Column(
-            spacing: 16.h,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  spacing: 16.h,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      spacing: 16.w,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppText(
-                              'Hello, ${controller.authController.userInfo.value?.email}',
-                              style: AppTextStyle.poppinMedium400(
-                                color: AppColors.colors.typography.heading,
-                              ),
+      height: (116 + 16).h,
+      color: AppColors.theme.white,
+      padding: EdgeInsets.only(bottom: 16.h),
+      child: Column(
+        spacing: 16.h,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              spacing: 16.h,
+              children: [
+                SizedBox(
+                  height: 52.h,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    spacing: 16.w,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            'Hi ${controller.authController.userInfo.value?.name}',
+                            style: AppTextStyle.poppinMedium400(
+                              color: AppColors.colors.typography.heading,
                             ),
-                            AppText(
-                              'What are you carving?',
-                              style: AppTextStyle.poppinLarge400(
-                                color: AppColors.colors.typography.heading,
-                              ),
+                          ),
+                          AppText(
+                            'What are you carving?',
+                            style: AppTextStyle.poppinLarge400(
+                              color: AppColors.colors.typography.heading,
                             ),
-                          ],
-                        ),
-                        Obx(() => AppAvatar(
-                            onTap: () {
-                              onOpenUser?.call();
-                            },
-                            avatarUrl: controller.authController.avatarUrl)),
-                      ],
-                    ),
-                    AppSearchDropdown<String>(
-                      hintText: '搜索城市',
-                      items: [
-                        'Chocolate boba',
-                        'grilled beef burger',
-                        'honey bee cake',
-                        'classic momos',
-                      ],
-                      itemToString: (item) => item,
-                      onChanged: (value) => logger.d('选中：$value'),
-                    )
-                  ],
+                          ),
+                        ],
+                      ),
+                      Obx(() => AppAvatar(
+                          onTap: () {
+                            onOpenUser?.call();
+                          },
+                          avatarUrl: controller.authController.avatarUrl)),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                AppSearchDropdown<String>(
+                  hintText: '搜索城市',
+                  items: [
+                    'Chocolate boba',
+                    'grilled beef burger',
+                    'honey bee cake',
+                    'classic momos',
+                  ],
+                  itemToString: (item) => item,
+                  onChanged: (value) => logger.d('选中：$value'),
+                )
+              ],
+            ),
           ),
-        ));
+        ],
+      ),
+    );
   }
 
   Widget _buildCarouselSlider() {
@@ -131,6 +135,7 @@ class _HomeViewGetX extends GetView<HomeController> {
 
   Widget _buildTabs() {
     return Container(
+      height: (42 + 16).h,
       color: AppColors.theme.white,
       padding: EdgeInsets.only(left: 20.w, bottom: 16.h),
       child: AppTabs<String>(
@@ -269,23 +274,22 @@ class _HomeViewGetX extends GetView<HomeController> {
       slivers: [
         SliverPersistentHeader(
           pinned: true,
-          delegate: StickyHeaderDelegate(child: _buildHeader(), height: 150),
+          delegate:
+              StickyHeaderDelegate(child: _buildHeader(), height: (116 + 16).h),
         ),
         SliverToBoxAdapter(child: _buildCarouselSlider()),
         SliverPersistentHeader(
           pinned: true,
-          delegate: StickyHeaderDelegate(child: _buildTabs(), height: 58),
+          delegate:
+              StickyHeaderDelegate(child: _buildTabs(), height: (42 + 16).h),
         ),
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          sliver: SliverGrid.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16.w,
-              mainAxisSpacing: 16.h,
-              childAspectRatio: 0.75, // 宽高比：宽 / 高
-            ),
-            itemCount: controller.foodItems.length,
+          sliver: SliverMasonryGrid.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16.w,
+            crossAxisSpacing: 16.w,
+            childCount: controller.foodItems.length,
             itemBuilder: (context, index) {
               return _buildGridItem(
                   context, controller.foodItems[index], index);
@@ -304,7 +308,7 @@ class _HomeViewGetX extends GetView<HomeController> {
       id: "home",
       builder: (_) {
         return Scaffold(
-          body: UnfoucsBox(child: _buildView()),
+          body: UnfoucsBox(child: SafeArea(child: _buildView())),
         );
       },
     );

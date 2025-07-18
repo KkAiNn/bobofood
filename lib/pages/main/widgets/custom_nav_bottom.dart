@@ -278,9 +278,12 @@ class _CustomNavBottomState extends State<CustomNavBottom>
     );
 
     if (widget.useSafeArea) {
-      navBar = SafeArea(
-        top: false,
-        child: navBar,
+      navBar = Container(
+        color: widget.backgroundColor,
+        child: SafeArea(
+          top: false,
+          child: navBar,
+        ),
       );
     }
 

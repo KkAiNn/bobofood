@@ -14,6 +14,7 @@ class FavouritesPage extends GetView<FavouritesController> {
 
   Widget _buildProductList() {
     return AppRefreshWrapper(
+      padding: EdgeInsets.only(top: 16.w, left: 20.w, right: 20.w),
       controller: controller.listController,
       separator: SizedBox(height: 12.h),
       itemBuilder: (context, item, index) {
@@ -38,10 +39,7 @@ class FavouritesPage extends GetView<FavouritesController> {
 
   // 主视图
   Widget _buildView() {
-    return Padding(
-      padding: EdgeInsets.only(top: 16.w, left: 20.w, right: 20.w),
-      child: _buildProductList(),
-    );
+    return _buildProductList();
   }
 
   @override
