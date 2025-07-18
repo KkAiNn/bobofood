@@ -59,6 +59,7 @@ class BuildMainApp extends StatelessWidget {
     final isDark = AppStorage.conifg.get(ConifgBoxKey.themeMode);
     return ScreenUtilInit(
       designSize: const Size(375, 812),
+      splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
           // 禁止滚动拉伸

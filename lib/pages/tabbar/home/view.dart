@@ -48,7 +48,7 @@ class _HomeViewGetX extends GetView<HomeController> {
   Widget _buildHeader() {
     return Container(
         color: AppColors.theme.white,
-        padding: EdgeInsets.only(bottom: 16.h),
+        padding: EdgeInsets.only(bottom: 12),
         child: SafeArea(
           child: Column(
             spacing: 16.h,
@@ -114,10 +114,10 @@ class _HomeViewGetX extends GetView<HomeController> {
         itemBuilder: (context, url, index) {
           return Image.asset(
             url,
-            height: 140.h,
+            height: 140,
           );
         },
-        height: 140.h,
+        height: 140,
         viewportFraction: 0.95,
         itemSpacing: 8,
         enableInfiniteScroll: true,
@@ -269,12 +269,12 @@ class _HomeViewGetX extends GetView<HomeController> {
       slivers: [
         SliverPersistentHeader(
           pinned: true,
-          delegate: StickyHeaderDelegate(child: _buildHeader(), height: 154.h),
+          delegate: StickyHeaderDelegate(child: _buildHeader(), height: 150),
         ),
         SliverToBoxAdapter(child: _buildCarouselSlider()),
         SliverPersistentHeader(
           pinned: true,
-          delegate: StickyHeaderDelegate(child: _buildTabs(), height: 58.h),
+          delegate: StickyHeaderDelegate(child: _buildTabs(), height: 58),
         ),
         SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -295,38 +295,6 @@ class _HomeViewGetX extends GetView<HomeController> {
         SliverToBoxAdapter(child: SizedBox(height: 12.h)),
       ],
     );
-
-    // return NestedScrollView(
-    //   key: const Key('home_page'),
-    //   physics: const ClampingScrollPhysics(),
-    //   headerSliverBuilder: (context, innerBoxScrolled) {
-    //     return [
-    //       SliverPersistentHeader(
-    //         pinned: true,
-    //         delegate:
-    //             StickyHeaderDelegate(child: _buildHeader(), height: 154.h),
-    //       ),
-    //       SliverToBoxAdapter(child: _buildCarouselSlider()),
-    //       SliverPersistentHeader(
-    //         pinned: true,
-    //         delegate: StickyHeaderDelegate(child: _buildTabs(), height: 58.h),
-    //       ),
-    //     ];
-    //   },
-    //   body: Padding(
-    //     padding: EdgeInsets.symmetric(horizontal: 20.w),
-    //     child: AppGridRefreshWrapper(
-    //       controller: controller.listController,
-    //       crossAxisCount: 2,
-    //       mainAxisSpacing: 16.h,
-    //       crossAxisSpacing: 16.w,
-    //       childAspectRatio: 0.75,
-    //       itemBuilder: (context, item, index) {
-    //         return _buildGridItem(context, item, index);
-    //       },
-    //     ),
-    //   ),
-    // );
   }
 
   @override

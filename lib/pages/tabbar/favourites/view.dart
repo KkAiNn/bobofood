@@ -1,5 +1,6 @@
 import 'package:bobofood/common/widget/app_refresh_list_view.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
+import 'package:bobofood/common/widget/tap_effect.dart';
 import 'package:bobofood/pages/product/widget/product_landscape.dart';
 import 'package:bobofood/pages/tabbar/widget/empty.dart';
 import 'package:flutter/material.dart';
@@ -16,11 +17,15 @@ class FavouritesPage extends GetView<FavouritesController> {
       controller: controller.listController,
       separator: SizedBox(height: 12.h),
       itemBuilder: (context, item, index) {
-        return ProductLandscape(
-          product: item,
-          showAddToCart: false,
-          showStar: false,
-        );
+        return TapEffect(
+            onTap: () {
+              controller.onTapProduct(item);
+            },
+            child: ProductLandscape(
+              product: item,
+              showAddToCart: false,
+              showStar: false,
+            ));
       },
       emptyWidget: EmptyWidget(
         title: "Nothing found here!",

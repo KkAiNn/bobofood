@@ -21,7 +21,7 @@ class NotificationItme extends StatelessWidget {
           borderRadius: BorderRadius.circular(32.w),
           child: Container(
               width: 48.w,
-              height: 48.h,
+              height: 48.w,
               decoration: BoxDecoration(
                 color: AppColors.colors.background.layer2Background,
               ),
@@ -29,7 +29,7 @@ class NotificationItme extends StatelessWidget {
                 child: AppSvg(
                   path: "assets/icons/Logo.svg",
                   width: 32.w,
-                  height: 32.h,
+                  height: 32.w,
                   color: AppColors.colors.icon.primary,
                 ),
               )),
