@@ -116,7 +116,7 @@ class _HomeViewGetX extends GetView<HomeController> {
             fit: BoxFit.fill,
           );
         },
-        height: 140.h,
+        height: 140.w,
         viewportFraction: 0.95,
         itemSpacing: 8.w,
         enableInfiniteScroll: true,

@@ -162,6 +162,7 @@ class AppNavBar extends StatelessWidget implements PreferredSizeWidget {
   static AppNavBar navigationTab(
       {String? title, String? icon, List<Widget>? trailingWidgets}) {
     return AppNavBar(
+        automaticallyImplyLeading: false,
         title: Row(
           spacing: 0,
           mainAxisAlignment: MainAxisAlignment.center,
