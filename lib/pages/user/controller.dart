@@ -58,8 +58,9 @@ class UserController extends GetxController {
       _initData();
     });
 
-    LocationUtils.getCurrentPosition(mode: AMapLocationMode.Device_Sensors)
+    LocationUtils.getCurrentPosition(mode: AMapLocationMode.Hight_Accuracy)
         .then((value) {
+      // LocationUtils.getCurrentPosition().then((value) {
       print(value);
     });
   }

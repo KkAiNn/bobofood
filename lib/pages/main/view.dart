@@ -39,6 +39,7 @@ class _MainAppViewGetX extends GetView<MainController> {
           onThemeChange: controller.onThemeChange,
         ),
       ),
+      drawerEdgeDragWidth: 80,
       drawerEnableOpenDragGesture: true,
       drawerDragStartBehavior: DragStartBehavior.down,
       body: PageView(

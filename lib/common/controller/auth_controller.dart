@@ -106,7 +106,7 @@ class AuthController extends GetxController {
   UserModel getUserInfo() {
     return UserModel(
       address: MockData.address.first,
-      avatarUrl: "/mnt/shared/Applications/appicon/com.example.xiaozao.png",
+      avatarUrl: "assets/avatar.png",
       birthDate: "2025-07-17",
       email: "test@test.com",
       name: "123",

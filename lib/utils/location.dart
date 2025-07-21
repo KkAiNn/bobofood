@@ -66,6 +66,7 @@ class LocationUtils {
           stopListener();
         }
         logger.d('onLocationChanged: $result');
+        print(result);
         onLocationChanged?.call(LocationModel.fromJson(result));
       },
       onError: (error) {

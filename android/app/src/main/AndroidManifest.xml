@@ -30,6 +30,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="151a141976afa97c299654d826cb6146"> </meta-data>
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
