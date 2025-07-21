@@ -50,61 +50,56 @@ class _HomeViewGetX extends GetView<HomeController> {
     return Container(
       height: (116 + 16).h,
       color: AppColors.theme.white,
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: Column(
-        spacing: 16.h,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              spacing: 16.h,
-              children: [
-                SizedBox(
-                  height: 56.h,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    spacing: 16.w,
+      padding: EdgeInsets.only(bottom: 16.h, top: 12.h),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 68.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 16.w,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppText(
-                            'Hi ${controller.authController.userInfo.value?.name}',
-                            style: AppTextStyle.poppinMedium400(
-                              color: AppColors.colors.typography.heading,
-                            ),
-                          ),
-                          AppText(
-                            'What are you carving?',
-                            style: AppTextStyle.poppinLarge400(
-                              color: AppColors.colors.typography.heading,
-                            ),
-                          ),
-                        ],
+                      AppText(
+                        'Hi ${controller.authController.userInfo.value?.name}',
+                        style: AppTextStyle.poppinMedium400(
+                          color: AppColors.colors.typography.heading,
+                        ),
                       ),
-                      Obx(() => AppAvatar(
-                          onTap: () {
-                            onOpenUser?.call();
-                          },
-                          avatarUrl: controller.authController.avatarUrl)),
+                      AppText(
+                        'What are you carving?',
+                        style: AppTextStyle.poppinLarge400(
+                          color: AppColors.colors.typography.heading,
+                        ),
+                      ),
                     ],
                   ),
-                ),
-                AppSearchDropdown<String>(
-                  hintText: '搜索城市',
-                  items: [
-                    'Chocolate boba',
-                    'grilled beef burger',
-                    'honey bee cake',
-                    'classic momos',
-                  ],
-                  itemToString: (item) => item,
-                  onChanged: (value) => logger.d('选中：$value'),
-                )
-              ],
+                  Obx(() => AppAvatar(
+                      onTap: () {
+                        onOpenUser?.call();
+                      },
+                      avatarUrl: controller.authController.avatarUrl)),
+                ],
+              ),
             ),
-          ),
-        ],
+            AppSearchDropdown<String>(
+              hintText: '搜索城市',
+              items: [
+                'Chocolate boba',
+                'grilled beef burger',
+                'honey bee cake',
+                'classic momos',
+              ],
+              itemToString: (item) => item,
+              onChanged: (value) => logger.d('选中：$value'),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -274,8 +269,8 @@ class _HomeViewGetX extends GetView<HomeController> {
       slivers: [
         SliverPersistentHeader(
           pinned: true,
-          delegate:
-              StickyHeaderDelegate(child: _buildHeader(), height: (116 + 16).h),
+          delegate: StickyHeaderDelegate(
+              child: _buildHeader(), height: (116 + 16 + 12).h),
         ),
         SliverToBoxAdapter(child: _buildCarouselSlider()),
         SliverPersistentHeader(
