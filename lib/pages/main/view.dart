@@ -1,10 +1,9 @@
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/pages/main/widgets/custom_nav_bottom.dart';
 import 'package:bobofood/pages/user/view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:bobofood/common/widget/pop_scope.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import 'index.dart';

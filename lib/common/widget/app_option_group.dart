@@ -1,8 +1,6 @@
 import 'package:bobofood/common/widget/app_text.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppOptionGroup extends StatelessWidget {
   const AppOptionGroup({super.key, required this.title, required this.options});

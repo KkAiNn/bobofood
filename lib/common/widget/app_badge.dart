@@ -1,4 +1,4 @@
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 
 class AppBadge extends StatelessWidget {

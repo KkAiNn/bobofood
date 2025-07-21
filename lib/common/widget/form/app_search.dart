@@ -3,10 +3,8 @@ import 'package:bobofood/common/widget/app_svg.dart';
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/form/app_input.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSearchDropdown<T> extends StatefulWidget {
   final List<T> items;

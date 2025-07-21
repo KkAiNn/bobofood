@@ -1,9 +1,7 @@
 import 'package:bobofood/common/widget/app_badge.dart';
 import 'package:bobofood/common/widget/app_text.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSegmentedItem {
   final String value;

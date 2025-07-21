@@ -1,7 +1,6 @@
 import 'package:bobofood/common/widget/app_svg.dart';
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppStars extends StatefulWidget {
   final int rating;

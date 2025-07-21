@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:bobofood/constants/index.dart';
 
 /// 自定义单选按钮组件
 class AppRadio extends StatelessWidget {

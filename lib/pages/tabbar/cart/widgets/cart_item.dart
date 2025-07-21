@@ -1,11 +1,9 @@
 import 'package:bobofood/common/model/cart.dart';
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_counter_button.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartItem extends StatelessWidget {
   final CartModel cartItem;

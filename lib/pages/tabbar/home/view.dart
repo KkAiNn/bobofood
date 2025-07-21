@@ -9,11 +9,9 @@ import 'package:bobofood/common/widget/button/app_action_icon.dart';
 import 'package:bobofood/common/widget/form/app_search.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
 import 'package:bobofood/common/widget/unfoucs_box.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/utils/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 

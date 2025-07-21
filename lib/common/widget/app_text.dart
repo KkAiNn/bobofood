@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:bobofood/common/extension/fix_auto_lines.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 通用文本组件，支持样式配置、默认字体、颜色等
 class AppText extends StatelessWidget {

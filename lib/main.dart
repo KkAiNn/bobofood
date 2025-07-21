@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/theme_modal.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'router/app_router.dart';
 import 'services/storage_services.dart';
 import 'package:get/get.dart';

@@ -1,8 +1,6 @@
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppInputController extends TextEditingController {
   final ValueNotifier<bool> hasError = ValueNotifier(false);

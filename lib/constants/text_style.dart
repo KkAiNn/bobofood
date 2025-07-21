@@ -1,6 +1,5 @@
-import 'package:bobofood/constants/font.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 100 - Thin
 // 200 - Extra Light (Ultra Light)

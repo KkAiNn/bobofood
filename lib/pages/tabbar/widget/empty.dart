@@ -1,12 +1,9 @@
 import 'package:bobofood/common/widget/app_image.dart';
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_button.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/constants.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/pages/main/controller.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class EmptyWidget extends StatelessWidget {

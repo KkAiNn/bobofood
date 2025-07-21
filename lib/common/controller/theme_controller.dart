@@ -1,5 +1,4 @@
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/theme_modal.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/services/storage_services.dart';
 import 'package:bobofood/utils/app_event_bus.dart';
 import 'package:get/get.dart';

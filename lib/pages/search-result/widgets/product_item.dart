@@ -1,11 +1,9 @@
 import 'package:bobofood/common/widget/app_svg.dart';
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_action_icon.dart';
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/common/model/product.dart';
-import 'package:bobofood/constants/text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({super.key, required this.product, required this.onTap});

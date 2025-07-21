@@ -1,5 +1,5 @@
 import 'package:bobofood/common/widget/app_svg.dart';
-import 'package:bobofood/constants/colors.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/utils/utils.dart';
 import 'package:flutter/material.dart';
 

@@ -1,10 +1,8 @@
 import 'package:bobofood/common/model/notification.dart';
 import 'package:bobofood/common/widget/app_svg.dart';
 import 'package:bobofood/common/widget/app_text.dart';
-import 'package:bobofood/constants/colors.dart';
-import 'package:bobofood/constants/text_style.dart';
+import 'package:bobofood/constants/index.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationItme extends StatelessWidget {
   const NotificationItme({super.key, required this.notification});
