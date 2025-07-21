@@ -50,7 +50,7 @@ class _HomeViewGetX extends GetView<HomeController> {
     return Container(
       height: (116 + 16).h,
       color: AppColors.theme.white,
-      padding: EdgeInsets.only(bottom: 16.h),
+      padding: EdgeInsets.only(bottom: 12.h),
       child: Column(
         spacing: 16.h,
         children: [
@@ -60,7 +60,7 @@ class _HomeViewGetX extends GetView<HomeController> {
               spacing: 16.h,
               children: [
                 SizedBox(
-                  height: 52.h,
+                  height: 56.h,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     spacing: 16.w,
