@@ -5,7 +5,6 @@ import 'package:bobofood/common/widget/button/app_button.dart';
 import 'package:bobofood/common/widget/form/app_input.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -50,7 +49,7 @@ class AddAddressPage extends GetView<AddAddressController> {
                 AppInput(
                   hintText:
                       'delivery instructions (optional for specific directions or requests)',
-                  minLines: 2,
+                  minLines: 3,
                   controller: controller.deliveryInstructionsController,
                 ),
                 SizedBox(
@@ -156,7 +155,7 @@ class AddAddressPage extends GetView<AddAddressController> {
             ],
           ),
           body: SafeArea(
-            child: UnfoucsBox(child: _buildView()),
+            child: _buildView(),
           ),
         );
       },

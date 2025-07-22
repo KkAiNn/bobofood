@@ -2,7 +2,6 @@ import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_button.dart';
 import 'package:bobofood/common/widget/form/app_password_input.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,34 +13,32 @@ class CreateNewPasswordPage extends GetView<CreateNewPasswordController> {
 
   // 主视图
   Widget _buildView() {
-    return UnfoucsBox(
-        child: Form(
-      key: controller.formKey,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: _buildCreateNewPassword(),
-            ),
-            Column(
-              children: [
-                AppButton(
-                  width: double.infinity,
-                  isDisabled: controller.isDisabled,
-                  text: 'Continue',
-                  onTap: controller.onTapContinue,
-                ),
-                SizedBox(height: 12.h),
-              ],
-            )
-          ],
-        ),
-      ),
-    ));
+    return Form(
+        key: controller.formKey,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: _buildCreateNewPassword(),
+              ),
+              Column(
+                children: [
+                  AppButton(
+                    width: double.infinity,
+                    isDisabled: controller.isDisabled,
+                    text: 'Continue',
+                    onTap: controller.onTapContinue,
+                  ),
+                  SizedBox(height: 12.h),
+                ],
+              )
+            ],
+          ),
+        ));
   }
 
   List<Widget> _buildCreateNewPassword() {

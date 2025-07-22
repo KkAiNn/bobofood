@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// 点击空白处收起键盘
-class UnfoucsBox extends StatelessWidget {
-  const UnfoucsBox({
+class GlobalTap extends StatelessWidget {
+  const GlobalTap({
     super.key,
     required this.child,
     this.onTap,

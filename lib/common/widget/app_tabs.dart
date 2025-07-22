@@ -30,7 +30,10 @@ class _AppTabsState<T> extends State<AppTabs<T>> {
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: 24.w,
+          ),
+          height: 42.h,
           decoration: BoxDecoration(
             color: isSelected
                 ? AppColors.colors.background.secondary
@@ -69,9 +72,7 @@ class _AppTabsState<T> extends State<AppTabs<T>> {
         spacing: 8.w,
         children: [
           ...widget.tabs.map((tab) => _buildTabsItem(tab)),
-          SizedBox(
-            width: 12.w,
-          )
+          AppGaps.gap12
         ],
       ),
     );

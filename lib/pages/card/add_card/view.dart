@@ -6,7 +6,6 @@ import 'package:bobofood/common/widget/form/app_input.dart';
 import 'package:bobofood/common/widget/form/app_select.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -81,23 +80,22 @@ class AddCardPage extends GetView<AddCardController> {
       init: AddCardController(),
       id: "add_card",
       builder: (_) {
-        return UnfoucsBox(
-            child: Scaffold(
-          appBar: AppNavBar(
-            titleText: controller.card?.id == null ? 'Add a card' : 'Edit Card',
-            trailingWidgets: [
-              TapEffect(
-                  child: AppSvg(
-                path: 'assets/icons/More.svg',
-                width: 24.w,
-                height: 24.h,
-              ))
-            ],
-          ),
-          body: SafeArea(
-            child: _buildView(),
-          ),
-        ));
+        return Scaffold(
+            appBar: AppNavBar(
+              titleText:
+                  controller.card?.id == null ? 'Add a card' : 'Edit Card',
+              trailingWidgets: [
+                TapEffect(
+                    child: AppSvg(
+                  path: 'assets/icons/More.svg',
+                  width: 24.w,
+                  height: 24.h,
+                ))
+              ],
+            ),
+            body: SafeArea(
+              child: _buildView(),
+            ));
       },
     );
   }

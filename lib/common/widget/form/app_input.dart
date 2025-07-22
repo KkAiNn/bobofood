@@ -151,7 +151,7 @@ class _AppInputState extends State<AppInput> {
 
     final isMultiline = widget.minLines != null && widget.minLines! > 1;
     return SizedBox(
-      height: 48.h,
+      height: isMultiline ? null : 48.h,
       child: TextFormField(
         key: widget.formFieldKey, // ✅ 只绑定外部传入的 key
         textAlign: widget.textAlign ?? TextAlign.start,
@@ -218,7 +218,7 @@ class _AppInputState extends State<AppInput> {
               : widget.fillColor ??
                   AppColors.colors.background.elementBackground,
           contentPadding: widget.contentPadding ??
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           errorMaxLines: 2,
           border: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(12.r),

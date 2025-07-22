@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bobofood/common/widget/global_tap.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -62,7 +63,8 @@ class BuildMainApp extends StatelessWidget {
       designSize: const Size(375, 812),
       splitScreenMode: true,
       builder: (context, child) {
-        return GetMaterialApp(
+        return GlobalTap(
+            child: GetMaterialApp(
           // 禁止滚动拉伸
           scrollBehavior: AppScrollBehavior(),
           debugShowCheckedModeBanner: false,
@@ -94,7 +96,7 @@ class BuildMainApp extends StatelessWidget {
             // Data.init();
             // setupServiceLocator();
           },
-        );
+        ));
       },
     );
   }

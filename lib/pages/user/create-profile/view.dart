@@ -1,7 +1,6 @@
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_button.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/pages/user/widgets/profile.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,7 @@ class CreateProfilePage extends GetView<CreateProfileController> {
 
   // 主视图
   Widget _buildView() {
-    return UnfoucsBox(
-        child: Padding(
+    return Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w, vertical: 12.h),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +43,7 @@ class CreateProfilePage extends GetView<CreateProfileController> {
           ),
         ],
       ),
-    ));
+    );
   }
 
   @override

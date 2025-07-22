@@ -8,7 +8,6 @@ import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_action_icon.dart';
 import 'package:bobofood/common/widget/form/app_search.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/utils/logger.dart';
 import 'package:flutter/material.dart';
@@ -301,7 +300,7 @@ class _HomeViewGetX extends GetView<HomeController> {
       id: "home",
       builder: (_) {
         return Scaffold(
-          body: UnfoucsBox(child: SafeArea(child: _buildView())),
+          body: SafeArea(child: _buildView()),
         );
       },
     );

@@ -36,7 +36,7 @@ class _TrackOrderViewGetX extends GetView<TrackOrderController> {
       child: Column(
         spacing: 20.h,
         children: [
-          SizedBox.shrink(),
+          AppGaps.empty,
           AppSearchDropdown(
             hintText: 'search for food...',
             items: controller.items,

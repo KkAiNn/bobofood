@@ -4,7 +4,6 @@ import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_button.dart';
 import 'package:bobofood/common/widget/form/app_input.dart';
 import 'package:bobofood/common/widget/navigate/app_navbar.dart';
-import 'package:bobofood/common/widget/unfoucs_box.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -78,13 +77,12 @@ class AddCouponPage extends GetView<AddCouponController> {
       init: AddCouponController(),
       id: "add_coupon",
       builder: (_) {
-        return UnfoucsBox(
-          child: Scaffold(
-              appBar: AppNavBar.editingSaveAndCancel(
-                  title: "Add Coupon", onSave: controller.onTapSave),
-              body: SafeArea(
-                child: _buildView(),
-              )),
+        return Scaffold(
+          appBar: AppNavBar.editingSaveAndCancel(
+              title: "Add Coupon", onSave: controller.onTapSave),
+          body: SafeArea(
+            child: _buildView(),
+          ),
         );
       },
     );

@@ -73,7 +73,7 @@ class AuthController extends GetxController {
   }
 
   void initController() {
-    LocationUtils.init();
+    LocationUtils.instance.init();
     // 地址
     Get.put<AddressController>(AddressController(), permanent: true);
     // 购物车

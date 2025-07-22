@@ -9,14 +9,26 @@ import 'package:bobofood/utils/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class LocationUtils {
-  static final AMapFlutterLocation _locationPlugin = AMapFlutterLocation();
-  static StreamSubscription<Map<String, Object>>? _locationListener;
-  static bool _isInitialized = false;
-  static bool onceLocation = false;
+  // 单例实例
+  static LocationUtils? _instance;
 
-  static Function(LocationModel)? onLocationChanged;
+  // 获取单例实例的方法
+  static LocationUtils get instance {
+    _instance ??= LocationUtils._();
+    return _instance!;
+  }
 
-  static Future<void> init() async {
+  // 私有构造函数，防止外部实例化
+  LocationUtils._();
+
+  final AMapFlutterLocation _locationPlugin = AMapFlutterLocation();
+  StreamSubscription<Map<String, Object>>? _locationListener;
+  bool _isInitialized = false;
+  bool onceLocation = false;
+
+  Function(LocationModel)? onLocationChanged;
+
+  Future<void> init() async {
     if (_isInitialized) return;
 
     /// 设置是否已经包含高德隐私政策并弹窗展示显示用户查看，如果未包含或者没有弹窗展示，高德定位SDK将不会工作
@@ -76,14 +88,15 @@ class LocationUtils {
       },
     );
     _isInitialized = true;
+    getCurrentPosition(mode: AMapLocationMode.Device_Sensors);
   }
 
   /// 获取一次当前位置（带权限处理）
-  static Future getCurrentPosition({
+  Future<LocationModel?> getCurrentPosition({
     AMapLocationMode mode = AMapLocationMode.Hight_Accuracy,
     bool needAddress = false,
   }) async {
-    init(); // 防止未初始化
+    await init(); // 防止未初始化
     final completer = Completer<LocationModel?>();
     onceLocation = true;
 
@@ -105,27 +118,31 @@ class LocationUtils {
   }
 
   /// 获取快速定位和精准定位 先获取手机定位，再获取精准定位 更好的用户体验
-  static Future getFastThenAccuratePosition(
+  Future<void> getFastThenAccuratePosition(
     Function(LocationModel) onSuccess,
   ) async {
     try {
-      final position1 = await LocationUtils.getCurrentPosition(
+      final position1 = await getCurrentPosition(
         mode: AMapLocationMode.Device_Sensors,
         needAddress: false,
       );
-      onSuccess(position1);
-      final position2 = await LocationUtils.getCurrentPosition(
+      if (position1 != null) {
+        onSuccess(position1);
+      }
+      final position2 = await getCurrentPosition(
         mode: AMapLocationMode.Hight_Accuracy,
         needAddress: true,
       );
-      onSuccess(position2);
+      if (position2 != null) {
+        onSuccess(position2);
+      }
     } catch (e) {
       logger.d('getFastThenAccuratePosition error: $e');
     }
   }
 
   ///设置定位参数
-  static void _setLocationOption({
+  void _setLocationOption({
     AMapLocationMode mode = AMapLocationMode.Hight_Accuracy,
     bool needAddress = false,
   }) {
@@ -174,22 +191,22 @@ class LocationUtils {
     _locationPlugin.setLocationOption(locationOption);
   }
 
-  static void startListener() {
+  void startListener() {
     onceLocation = false;
     startLocation();
   }
 
-  static void stopListener() {
+  void stopListener() {
     _locationPlugin.stopLocation();
   }
 
-  static void startLocation() {
+  void startLocation() {
     init(); // 防止未初始化
     _setLocationOption();
     _locationPlugin.startLocation();
   }
 
-  static void dispose() {
+  void dispose() {
     ///移除定位监听
     if (null != _locationListener) {
       _locationListener?.cancel();
@@ -201,7 +218,7 @@ class LocationUtils {
   }
 
   ///获取iOS native的accuracyAuthorization类型
-  static void requestAccuracyAuthorization() async {
+  Future<void> requestAccuracyAuthorization() async {
     AMapAccuracyAuthorization currentAccuracyAuthorization =
         await _locationPlugin.getSystemAccuracyAuthorization();
     if (currentAccuracyAuthorization ==
@@ -216,7 +233,7 @@ class LocationUtils {
   }
 
   /// 动态申请定位权限
-  static Future<void> requestPermission() async {
+  Future<void> requestPermission() async {
     // 申请权限
     bool hasLocationPermission = await requestLocationPermission();
     if (hasLocationPermission) {
@@ -228,7 +245,7 @@ class LocationUtils {
 
   /// 申请定位权限
   /// 授予定位权限返回true， 否则返回false
-  static Future<bool> requestLocationPermission() async {
+  Future<bool> requestLocationPermission() async {
     //获取当前的权限
     var status = await Permission.location.status;
     if (status == PermissionStatus.granted) {

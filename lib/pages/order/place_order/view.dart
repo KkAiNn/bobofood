@@ -179,13 +179,12 @@ class PlaceOrderPage extends GetView<PlaceOrderController> {
       id: "place_order",
       builder: (_) {
         return Scaffold(
-          appBar: AppNavBar(
-            titleText: 'Place order',
-          ),
-          body: SafeArea(
-            child: _buildView(),
-          ),
-        );
+            appBar: AppNavBar(
+              titleText: 'Place order',
+            ),
+            body: SafeArea(
+              child: _buildView(),
+            ));
       },
     );
   }

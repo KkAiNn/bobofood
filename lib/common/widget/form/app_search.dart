@@ -13,6 +13,7 @@ class AppSearchDropdown<T> extends StatefulWidget {
   final ValueChanged<T>? onChanged;
   final void Function(String)? onSubmitted;
   final String Function(T)? itemToString;
+  final FocusNode? focusNode;
 
   const AppSearchDropdown({
     super.key,
@@ -22,6 +23,7 @@ class AppSearchDropdown<T> extends StatefulWidget {
     this.onChanged,
     this.itemToString,
     this.onSubmitted,
+    this.focusNode,
   });
 
   @override
@@ -277,6 +279,7 @@ class _AppSearchDropdownState<T> extends State<AppSearchDropdown<T>>
         link: _layerLink,
         child: AppInput(
           controller: _controller,
+          focusNode: widget.focusNode,
           hintText: 'search...',
           prefixIcon: Padding(
             padding: EdgeInsets.fromLTRB(12.w, 12.h, 4.w, 12.h),
@@ -290,6 +293,7 @@ class _AppSearchDropdownState<T> extends State<AppSearchDropdown<T>>
           textInputAction: TextInputAction.search,
           onSubmitted: _onSubmitted,
           onChanged: _onChanged,
+          autofocus: false,
           onTap: () {
             if (!_isDropdownOpen) _openDropdown();
           },
