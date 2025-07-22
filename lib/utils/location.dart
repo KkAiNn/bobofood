@@ -6,6 +6,7 @@ import 'package:amap_flutter_location/amap_location_option.dart';
 import 'package:bobofood/common/model/localtion.dart';
 import 'package:bobofood/constants/amap.dart';
 import 'package:bobofood/utils/logger.dart';
+import 'package:bobofood/utils/platformutils.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class LocationUtils {
@@ -88,7 +89,7 @@ class LocationUtils {
       },
     );
     _isInitialized = true;
-    getCurrentPosition(mode: AMapLocationMode.Device_Sensors);
+    getCurrentPosition();
   }
 
   /// 获取一次当前位置（带权限处理）
@@ -96,6 +97,10 @@ class LocationUtils {
     AMapLocationMode mode = AMapLocationMode.Hight_Accuracy,
     bool needAddress = false,
   }) async {
+    // 模拟器不使用高精度定位
+    if (PlatformUtils().isEmulator) {
+      mode = AMapLocationMode.Device_Sensors;
+    }
     await init(); // 防止未初始化
     final completer = Completer<LocationModel?>();
     onceLocation = true;

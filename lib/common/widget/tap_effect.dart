@@ -14,7 +14,11 @@ class TapEffect extends StatefulWidget {
   final void Function(TapDownDetails)? onTapDown;
   final void Function()? onTapCancel;
   final void Function(TapUpDetails)? onTapUp;
-  final bool ignorePointer;
+  final void Function(DragUpdateDetails)? onPanUpdate;
+  final void Function(DragEndDetails)? onPanEnd;
+  final void Function(DragStartDetails)? onPanStart;
+  final void Function()? onPanCancel;
+  final void Function(DragDownDetails)? onPanDown;
 
   const TapEffect({
     super.key,
@@ -30,7 +34,11 @@ class TapEffect extends StatefulWidget {
     this.onTapDown,
     this.onTapCancel,
     this.onTapUp,
-    this.ignorePointer = false,
+    this.onPanUpdate,
+    this.onPanEnd,
+    this.onPanStart,
+    this.onPanCancel,
+    this.onPanDown,
   });
 
   @override
@@ -40,60 +48,69 @@ class TapEffect extends StatefulWidget {
 class _TapEffectState extends State<TapEffect>
     with SingleTickerProviderStateMixin {
   double opacity = 1;
-  late AnimationController _controller;
-  late Animation<double> _opacityAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
-    _opacityAnimation = Tween<double>(
-      begin: 1.0,
-      end: widget.pressedOpacity,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
-    _opacityAnimation.addListener(() {
-      setState(() {
-        opacity = _opacityAnimation.value;
-      });
-    });
   }
 
   void _handleTapDown(TapDownDetails details) {
-    _controller.forward();
+    setState(() {
+      opacity = .5;
+    });
     widget.onTapDown?.call(details);
   }
 
+  void _handleTapCancel() {
+    setState(() {
+      opacity = 1;
+    });
+    widget.onTapCancel?.call();
+  }
+
   void _handleTapUp(TapUpDetails details) {
-    _controller.reverse();
+    setState(() {
+      opacity = 1;
+    });
     widget.onTapUp?.call(details);
   }
 
-  void _handleTapCancel() {
-    _controller.reverse();
-    widget.onTapCancel?.call();
+  void _handlePanUpdate(DragUpdateDetails details) {
+    widget.onPanUpdate?.call(details);
+  }
+
+  void _handlePanDown(DragDownDetails details) {
+    widget.onPanDown?.call(details);
+  }
+
+  void _handlePanStart(DragStartDetails details) {
+    widget.onPanStart?.call(details);
+  }
+
+  void _handlePanEnd(DragEndDetails details) {
+    widget.onPanEnd?.call(details);
+  }
+
+  void _handlePanCancel() {
+    widget.onPanCancel?.call();
   }
 
   void _longPress() {
     feedBack();
-    // 长按时不要恢复透明度，保持按下状态
+    setState(() {
+      opacity = .5;
+    });
     widget.onLongPress?.call();
-    // 长按结束后延迟恢复透明度
-    Future.delayed(const Duration(milliseconds: 200), () {
-      if (mounted) {
-        _controller.reverse();
-      }
+  }
+
+  void _longPressEnd(LongPressEndDetails details) {
+    setState(() {
+      opacity = 1;
     });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -116,20 +133,23 @@ class _TapEffectState extends State<TapEffect>
               child: widget.child,
             ),
           )
-        : IgnorePointer(
-            ignoring: widget.ignorePointer,
-            child: GestureDetector(
-              onTap: widget.onTap,
-              onLongPress: _longPress,
-              onTapDown: _handleTapDown,
-              onTapUp: _handleTapUp,
-              onTapCancel: _handleTapCancel,
-              child: AnimatedOpacity(
-                opacity: opacity,
-                duration: widget.duration,
-                curve: Curves.easeInOut,
-                child: widget.child,
-              ),
+        : GestureDetector(
+            onTap: widget.onTap,
+            onLongPress: _longPress,
+            onTapDown: _handleTapDown,
+            onTapCancel: _handleTapCancel,
+            onTapUp: _handleTapUp,
+            onPanDown: _handlePanDown,
+            onPanStart: _handlePanStart,
+            onPanEnd: _handlePanEnd,
+            onPanCancel: _handlePanCancel,
+            onPanUpdate: _handlePanUpdate,
+            onLongPressEnd: _longPressEnd,
+            child: AnimatedOpacity(
+              opacity: opacity,
+              duration: widget.duration,
+              curve: Curves.easeInOut,
+              child: widget.child,
             ),
           );
 
