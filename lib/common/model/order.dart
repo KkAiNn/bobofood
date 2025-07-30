@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bobofood/common/model/delivery_route.dart';
 import 'package:bobofood/common/model/product.dart';
 
 class OrderModel {
@@ -14,6 +15,7 @@ class OrderModel {
   String? deliveryEmail;
   String? deliveryDate;
   List<ProductModel>? products;
+  DeliveryRouteModel? deliveryRoute; // 添加配送路径字段
 
   OrderModel({
     this.id,
@@ -27,6 +29,7 @@ class OrderModel {
     this.deliveryEmail,
     this.deliveryDate,
     this.products,
+    this.deliveryRoute, // 添加配送路径参数
   });
 
   OrderModel copyWith({
@@ -41,6 +44,7 @@ class OrderModel {
     String? deliveryEmail,
     String? deliveryDate,
     List<ProductModel>? products,
+    DeliveryRouteModel? deliveryRoute, // 添加配送路径参数
   }) =>
       OrderModel(
         id: id ?? this.id,
@@ -54,6 +58,7 @@ class OrderModel {
         deliveryEmail: deliveryEmail ?? this.deliveryEmail,
         deliveryDate: deliveryDate ?? this.deliveryDate,
         products: products ?? this.products,
+        deliveryRoute: deliveryRoute ?? this.deliveryRoute, // 添加配送路径
       );
 
   factory OrderModel.fromJson(String str) =>
@@ -76,6 +81,9 @@ class OrderModel {
             ? []
             : List<ProductModel>.from(
                 json["products"].map((x) => ProductModel.fromMap(x))),
+        deliveryRoute: json["deliveryRoute"] == null
+            ? null
+            : DeliveryRouteModel.fromMap(json["deliveryRoute"]), // 添加配送路径解析
       );
 
   Map<String, dynamic> toMap() => {
@@ -90,5 +98,6 @@ class OrderModel {
         "deliveryEmail": deliveryEmail,
         "deliveryDate": deliveryDate,
         "products": products?.map((x) => x.toMap()).toList(),
+        "deliveryRoute": deliveryRoute?.toMap(), // 添加配送路径序列化
       };
 }

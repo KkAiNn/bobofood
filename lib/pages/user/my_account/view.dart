@@ -65,6 +65,10 @@ class MyAccountPage extends GetView<MyAccountController> {
           onTap: controller.onTapMyOrder,
         ),
         AppOption(
+          text: '配送路径管理',
+          onTap: controller.onTapDeliveryRoutes,
+        ),
+        AppOption(
           text: 'Settings',
           onTap: controller.onTapSettings,
         ),

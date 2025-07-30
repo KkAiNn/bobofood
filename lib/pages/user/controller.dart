@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:bobofood/common/controller/auth_controller.dart';
 import 'package:bobofood/common/controller/theme_controller.dart';
+import 'package:bobofood/common/widget/app_choose_location.dart';
 import 'package:bobofood/constants/constants.dart';
 import 'package:bobofood/router/app_router.dart';
 import 'package:bobofood/utils/app_event_bus.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UserController extends GetxController {
@@ -29,6 +31,10 @@ class UserController extends GetxController {
     themeController.toggleTheme();
   }
 
+  void onTapMap() {
+    Get.toNamed(AppRoute.map);
+  }
+
   void onTapMyAccount() {
     Get.toNamed(AppRoute.myAccount);
   }
@@ -43,6 +49,16 @@ class UserController extends GetxController {
 
   void onTapAddress() {
     Get.toNamed(AppRoute.address);
+  }
+
+  // 添加配送路径管理功能
+  void onTapDeliveryRoutes() {
+    // Get.toNamed(AppRoute.deliveryRoutes);
+    Get.to(() => AppChooseLocation());
+    // showDialog(
+    //   context: Get.context!,
+    //   builder: (context) => AppChooseLocation(),
+    // );
   }
 
   void onTapSettings() {

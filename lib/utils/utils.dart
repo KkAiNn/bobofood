@@ -413,4 +413,19 @@ class Utils {
       AppToast.show('应用未安装');
     }
   }
+
+  static Function throttle(Function func, Duration delay) {
+    bool enableCall = true;
+
+    return () {
+      if (!enableCall) return;
+
+      enableCall = false;
+      func();
+
+      Future.delayed(delay, () {
+        enableCall = true;
+      });
+    };
+  }
 }

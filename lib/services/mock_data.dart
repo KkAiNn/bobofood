@@ -1,6 +1,9 @@
 import 'package:bobofood/common/model/address.dart';
+import 'package:bobofood/common/model/delivery_route.dart';
 import 'package:bobofood/common/model/notification.dart';
 import 'package:bobofood/common/model/product.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:uuid/uuid.dart';
 
 class MockData {
   static List<ProductModel> products = [
@@ -146,6 +149,49 @@ class MockData {
       phone: '1234567890',
       street: '123 Main St',
       country: 'USA',
+    ),
+  ];
+
+  // 添加模拟的配送路径数据
+  static List<DeliveryRouteModel> deliveryRoutes = [
+    DeliveryRouteModel(
+      id: const Uuid().v4(),
+      name: '市中心配送路线',
+      description: '覆盖市中心主要商业区的配送路线',
+      waypoints: [
+        LatLng(31.2304, 121.4737), // 上海市中心
+        LatLng(31.2288, 121.4753),
+        LatLng(31.2271, 121.4775),
+        LatLng(31.2255, 121.4792),
+      ],
+      distance: 3.5,
+      estimatedTime: 20,
+    ),
+    DeliveryRouteModel(
+      id: const Uuid().v4(),
+      name: '郊区配送路线',
+      description: '通往郊区住宅区的配送路线',
+      waypoints: [
+        LatLng(31.2304, 121.4737),
+        LatLng(31.2350, 121.4830),
+        LatLng(31.2400, 121.4900),
+        LatLng(31.2450, 121.5000),
+      ],
+      distance: 5.2,
+      estimatedTime: 35,
+    ),
+    DeliveryRouteModel(
+      id: const Uuid().v4(),
+      name: '高速公路路线',
+      description: '通过高速公路的长距离配送路线',
+      waypoints: [
+        LatLng(31.2304, 121.4737),
+        LatLng(31.2500, 121.5000),
+        LatLng(31.2700, 121.5200),
+        LatLng(31.2900, 121.5500),
+      ],
+      distance: 12.8,
+      estimatedTime: 45,
     ),
   ];
 }

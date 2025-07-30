@@ -86,6 +86,11 @@ class MyAccountController extends GetxController {
     Get.toNamed(AppRoute.settings);
   }
 
+  // 添加配送路径管理功能
+  void onTapDeliveryRoutes() {
+    Get.toNamed(AppRoute.deliveryRoutes);
+  }
+
   _initData() {
     update(["my_account"]);
   }

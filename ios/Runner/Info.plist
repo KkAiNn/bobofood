@@ -47,6 +47,8 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<true/>
+		<!-- <key>AMapApiKey</key>
+		<string>你申请的key</string> -->
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>需要访问您的位置以获取定位服务</string>
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

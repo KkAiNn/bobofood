@@ -2,6 +2,8 @@ import 'package:bobofood/pages/address/change-address/view.dart';
 import 'package:bobofood/pages/address/view.dart';
 import 'package:bobofood/pages/card/add_card/view.dart';
 import 'package:bobofood/pages/card/payment_methods/view.dart';
+import 'package:bobofood/pages/delivery_route/delivery_route_detail/view.dart';
+import 'package:bobofood/pages/delivery_route/delivery_routes/view.dart';
 import 'package:bobofood/pages/delete_account/view.dart';
 import 'package:bobofood/pages/login/create-new-password/view.dart';
 import 'package:bobofood/pages/login/verify-code/view.dart';
@@ -10,6 +12,7 @@ import 'package:bobofood/pages/login/register/view.dart';
 import 'package:bobofood/pages/login/view.dart';
 import 'package:bobofood/pages/main/splash.dart';
 import 'package:bobofood/pages/main/view.dart';
+import 'package:bobofood/pages/map/view.dart';
 import 'package:bobofood/pages/order/add_coupon/view.dart';
 import 'package:bobofood/pages/card/change_card/view.dart';
 import 'package:bobofood/pages/order/my_order/view.dart';
@@ -55,6 +58,12 @@ class AppRoute {
   static const String searchResult = '/searchResult';
 
   static const String deleteAccount = '/deleteAccount';
+
+  static const String map = '/map';
+
+  // 配送路径相关路由
+  static const String deliveryRoutes = '/deliveryRoutes';
+  static const String deliveryRouteDetail = '/deliveryRouteDetail';
 }
 
 class Routes {
@@ -182,6 +191,22 @@ class Routes {
     GetPage(
       name: AppRoute.deleteAccount,
       page: () => const DeleteAccountPage(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.map,
+      page: () => const MapPage(),
+      transition: Transition.fadeIn,
+    ),
+    // 配送路径相关路由
+    GetPage(
+      name: AppRoute.deliveryRoutes,
+      page: () => const DeliveryRoutesPage(),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoute.deliveryRouteDetail,
+      page: () => const DeliveryRouteDetailPage(),
       transition: Transition.rightToLeftWithFade,
     ),
   ];

@@ -86,6 +86,11 @@ class UserPage extends GetView<UserController> {
         onTap: controller.onTapMyAccount,
       ),
       AppOption(
+        svgPath: 'assets/icons/Location.svg',
+        text: 'Map',
+        onTap: controller.onTapMap,
+      ),
+      AppOption(
         svgPath: 'assets/icons/Orders.svg',
         text: 'My Order',
         onTap: controller.onTapMyOrder,
@@ -99,6 +104,11 @@ class UserPage extends GetView<UserController> {
         svgPath: 'assets/icons/Location.svg',
         text: 'Address',
         onTap: controller.onTapAddress,
+      ),
+      AppOption(
+        svgPath: 'assets/icons/Location.svg',
+        text: '配送路径管理',
+        onTap: controller.onTapDeliveryRoutes,
       ),
       AppOption(
         svgPath: 'assets/icons/Subscription.svg',

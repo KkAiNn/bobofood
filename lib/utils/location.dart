@@ -19,6 +19,9 @@ class LocationUtils {
     return _instance!;
   }
 
+  static LocationModel? _currentLocation;
+  LocationModel? get currentLocation => _currentLocation;
+
   // 私有构造函数，防止外部实例化
   LocationUtils._();
 
@@ -27,7 +30,7 @@ class LocationUtils {
   bool _isInitialized = false;
   bool onceLocation = false;
 
-  Function(LocationModel)? onLocationChanged;
+  Function(LocationModel?)? onLocationChanged;
 
   Future<void> init() async {
     if (_isInitialized) return;
@@ -78,8 +81,12 @@ class LocationUtils {
         if (onceLocation) {
           stopListener();
         }
+        if (result['errorCode'] != null) {
+          onLocationChanged?.call(null);
+        }
         logger.d('onLocationChanged: $result');
-        onLocationChanged?.call(LocationModel.fromJson(result));
+        _currentLocation = LocationModel.fromJson(result);
+        onLocationChanged?.call(_currentLocation!);
       },
       onError: (error) {
         logger.d('onError: $error');
@@ -89,7 +96,7 @@ class LocationUtils {
       },
     );
     _isInitialized = true;
-    getCurrentPosition();
+    getCurrentPosition(mode: AMapLocationMode.Device_Sensors);
   }
 
   /// 获取一次当前位置（带权限处理）
@@ -105,7 +112,7 @@ class LocationUtils {
     final completer = Completer<LocationModel?>();
     onceLocation = true;
 
-    onLocationChanged = (LocationModel result) {
+    onLocationChanged = (LocationModel? result) {
       completer.complete(result);
     };
 

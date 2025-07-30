@@ -81,7 +81,11 @@ class ListController<T> {
     reset();
     if (onFetch != null) {
       final data = await onFetch!(page, pageSize);
-      addData(data, append: false);
+      if (data.isNotEmpty) {
+        addData(data, append: false);
+      } else {
+        hasMore = false;
+      }
       page++;
     } else {
       hasLoaded = true;

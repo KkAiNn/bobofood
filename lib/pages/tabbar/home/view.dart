@@ -6,7 +6,7 @@ import 'package:bobofood/common/widget/app_svg.dart';
 import 'package:bobofood/common/widget/app_tabs.dart';
 import 'package:bobofood/common/widget/app_text.dart';
 import 'package:bobofood/common/widget/button/app_action_icon.dart';
-import 'package:bobofood/common/widget/form/app_search.dart';
+import 'package:bobofood/common/widget/form/app_search_dropdown.dart';
 import 'package:bobofood/common/widget/tap_effect.dart';
 import 'package:bobofood/constants/index.dart';
 import 'package:bobofood/utils/logger.dart';
